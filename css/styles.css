@@ -1,0 +1,175 @@
+html {
+  box-sizing: border-box;
+  color: rgba(148, 173, 207, 0.7);
+  font-family: "Shantell Sans", cursive;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  font-family: inherit;
+}
+
+body {
+  background: #38404b;
+}
+
+::placeholder,
+input[type="text"] {
+  color: rgba(148, 173, 207, 0.7);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0 100px 0;
+}
+.input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 578px;
+  height: 59px;
+  background: #38404b;
+  box-shadow: 1px 1px 2px rgba(66, 75, 88, 0.3),
+    -1px -1px 2px rgba(46, 53, 62, 0.5),
+    inset -3px 3px 6px rgba(46, 53, 62, 0.2),
+    inset 3px -3px 6px rgba(46, 53, 62, 0.2),
+    inset -3px -3px 6px rgba(66, 75, 88, 0.9),
+    inset 3px 3px 8px rgba(46, 53, 62, 0.9);
+  border-radius: 16px;
+}
+
+.input__form {
+  width: 500px;
+  height: 18px;
+  margin: 0 0 0 38px;
+  background: #38404b;
+  border: none;
+}
+
+.input__button {
+  width: 25px;
+  height: 25px;
+  margin: 0 15px 0 0;
+  background: #38404b;
+  border: none;
+}
+
+.menu {
+  display: block;
+  margin-left: auto;
+  position: absolute;
+  right: 100px;
+}
+
+.main-wrapp {
+  max-width: 1027px;
+  margin: 0 auto;
+}
+
+.main-wrapp > h1 {
+  margin: 52px 0;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.actual-tasks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 129px;
+  row-gap: 52px;
+}
+
+.actual-tasks > li {
+  display: flex;
+  align-items: center;
+  height: 59px;
+  background: #38404b;
+  box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
+    5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
+    5px 5px 13px rgba(48, 54, 64, 0.9), inset 1px 1px 2px rgba(64, 74, 86, 0.3),
+    inset -1px -1px 2px rgba(48, 54, 64, 0.5);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.actual-tasks > li:hover {
+  box-shadow: -5px 5px 10px rgba(48, 54, 64, 1),
+    5px -5px 10px rgba(48, 54, 64, 1), -5px -5px 10px rgba(64, 74, 86, 1),
+    5px 5px 13px rgba(48, 54, 64, 1), inset 1px 1px 2px rgba(64, 74, 86, 1),
+    inset -1px -1px 2px rgba(48, 54, 64, 1);
+}
+
+.actual-tasks > li:active {
+  box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
+  5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
+  5px 5px 13px rgba(48, 54, 64, 0.9), inset 1px 1px 2px rgba(64, 74, 86, 0.3),
+  inset -1px -1px 2px rgba(48, 54, 64, 0.5);
+  transition: none;
+}
+
+.actual-tasks > li::before {
+  display: inline-block;
+  content: "";
+  height: 18px;
+  width: 18px;
+  margin: 0 27px 0 24px;
+  background-image: url(../img/svg/Ellipse_not_complete.svg);
+}
+
+.completed-tasks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 129px;
+  row-gap: 52px;
+}
+
+.completed-tasks > li {
+  display: flex;
+  align-items: center;
+  height: 59px;
+  background: #38404b;
+  box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
+    5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
+    5px 5px 13px rgba(48, 54, 64, 0.9), inset 1px 1px 2px rgba(64, 74, 86, 0.3),
+    inset -1px -1px 2px rgba(48, 54, 64, 0.5);
+  border-radius: 16px;
+  text-decoration: line-through;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.completed-tasks > li:hover {
+  box-shadow: -5px 5px 10px rgba(48, 54, 64, 1),
+    5px -5px 10px rgba(48, 54, 64, 1), -5px -5px 10px rgba(64, 74, 86, 1),
+    5px 5px 13px rgba(48, 54, 64, 1), inset 1px 1px 2px rgba(64, 74, 86, 1),
+    inset -1px -1px 2px rgba(48, 54, 64, 1);
+}
+
+.completed-tasks > li:active {
+  box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
+  5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
+  5px 5px 13px rgba(48, 54, 64, 0.9), inset 1px 1px 2px rgba(64, 74, 86, 0.3),
+  inset -1px -1px 2px rgba(48, 54, 64, 0.5);
+  transition: none;
+}
+
+.completed-tasks > li::before {
+  display: inline-block;
+  content: "";
+  height: 18px;
+  width: 18px;
+  margin: 0 27px 0 24px;
+  background-image: url(../img/svg/Ellipse_complete.svg);
+}
