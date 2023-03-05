@@ -1,8 +1,8 @@
 class ToDoList {
   constructor() {}
 
-  createNewTask() {
-    this.taskText = textInput.value;
+  createNewTask(taskText) {
+    this.taskText = taskText;
     if (this.taskText === "") return;
     this.newLi = document.createElement("li");
     this.textLi = document.createTextNode(this.taskText);
@@ -10,7 +10,7 @@ class ToDoList {
     this.closeButton.classList.add("close-button");
     this.newLi.prepend(this.textLi);
     this.newLi.append(this.closeButton);
-    actualTasks.prepend(this.newLi);
+    actualTasks.append(this.newLi);
     this.updateInputText();
   }
 
@@ -40,6 +40,40 @@ class ToDoList {
       event.target.closest("li").remove();
     }
   }
+
+  saveTasks() {
+    const actualTasksArr = [...actualTasks.querySelectorAll("li")].map(
+      (li) => li.innerText
+    );
+    const completedTaskArr = [...completedTasks.querySelectorAll("li")].map(
+      (li) => li.innerText
+    );
+    localStorage.setItem("actualTasks", JSON.stringify(actualTasksArr));
+    localStorage.setItem("completedTasks", JSON.stringify(completedTaskArr));
+  }
+
+  loadTasks() {
+    const actualTasksArr = JSON.parse(localStorage.getItem("actualTasks"));
+    const completedTaskArr = JSON.parse(localStorage.getItem("completedTasks"));
+    if (actualTasksArr) {
+      actualTasksArr.forEach((taskText) => {
+        this.createNewTask(taskText);
+      });
+    }
+    if (completedTaskArr) {
+      completedTaskArr.forEach((taskText) => {
+        this.taskText = taskText;
+        if (this.taskText === "") return;
+        this.newLi = document.createElement("li");
+        this.textLi = document.createTextNode(this.taskText);
+        this.closeButton = document.createElement("div");
+        this.closeButton.classList.add("close-button");
+        this.newLi.prepend(this.textLi);
+        this.newLi.append(this.closeButton);
+        completedTasks.append(this.newLi);
+      });
+    }
+  }
 }
 
 const newTaskButton = document.querySelector(".input__button");
@@ -50,16 +84,31 @@ const completedTasks = document.querySelector(".completed-tasks");
 const toDoList = new ToDoList();
 
 newTaskButton.addEventListener("click", () => {
-  toDoList.createNewTask();
+  toDoList.createNewTask(textInput.value);
   toDoList.updateInputText();
+  toDoList.saveTasks();
+});
+
+textInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    toDoList.createNewTask();
+    toDoList.updateInputText();
+    toDoList.saveTasks();
+  }
 });
 
 actualTasks.addEventListener("click", (event) => {
   toDoList.moveToCompleted(event);
   toDoList.deleteTask(event);
+  toDoList.saveTasks();
 });
 
 completedTasks.addEventListener("click", (event) => {
   toDoList.moveToActual(event);
   toDoList.deleteTask(event);
+  toDoList.saveTasks();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  toDoList.loadTasks();
 });

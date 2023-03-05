@@ -132,7 +132,6 @@ input[type="text"] {
   background-image: url(../img/svg/Ellipse_not_complete.svg);
 }
 
-
 .completed-tasks {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
