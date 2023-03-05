@@ -58,7 +58,6 @@ class ToDoList {
         liElem.remove();
         this.saveTasks();
       });
-      // event.target.closest("li").remove();
     }
   }
 
@@ -94,7 +93,49 @@ const textInput = document.querySelector(".input__form");
 const actualTasks = document.querySelector(".actual-tasks");
 const completedTasks = document.querySelector(".completed-tasks");
 
+class BurgerMenu {
+  constructor() {}
+
+  openMenu() {
+    const childElements = burgerActive.querySelectorAll("*");
+    childElements.forEach((element) => {
+      element.style.display = "block";
+    });
+    burgerActive.style.width = "100vw";
+    burgerActive.style.height = "100vh";
+    burgerActive.style.right = "0";
+    burgerActive.style.top = "0";
+    burgerActive.style.transition = "0.3s";
+  }
+
+  closeMenu() {
+    const childElements = burgerActive.querySelectorAll("*");
+    childElements.forEach((element) => {
+      element.style.display = "none";
+    });
+    burgerActive.style.width = "0vw";
+    burgerActive.style.height = "0vh";
+    burgerActive.style.right = "6%";
+    burgerActive.style.top = "12.5%";
+    burgerActive.style.transition = "0.3s";
+  }
+}
+
+const burgerButton = document.querySelector(".burger");
+const burgerActive = document.querySelector(".menu");
+const burgerClose = document.querySelector(".menu__close-button");
+
 const toDoList = new ToDoList();
+const burgerMenu = new BurgerMenu();
+
+burgerButton.addEventListener("click", () => {
+  burgerMenu.openMenu();
+});
+
+burgerClose.addEventListener("click", (event) => {
+  event.stopPropagation();
+  burgerMenu.closeMenu();
+});
 
 newTaskButton.addEventListener("click", () => {
   toDoList.createNewTask(textInput.value);

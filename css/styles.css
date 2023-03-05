@@ -69,11 +69,44 @@ input[type="text"] {
   border: none;
 }
 
-.menu {
+.burger {
   display: block;
   margin-left: auto;
   position: absolute;
   right: 100px;
+  transition: 0.3s;
+  width: 40px;
+  cursor: pointer;
+}
+
+.burger:hover {
+  width: 35px;
+}
+
+.menu {
+  display: block;
+  position: fixed;
+  right: 6%;
+  top: 12.5%;
+  height: 0vh;
+  width: 0vh;
+  background-color: black;
+  z-index: 10;
+  cursor: default;
+}
+
+.menu > * {
+  display: none;
+}
+
+.menu__close-button {
+  background-image: url(../img/icons8-close-30.png);
+  height: 30px;
+  width: 30px;
+  border: none;
+  background-color: black;
+  position: absolute;
+  right: 0;
 }
 
 .main-wrapp {
