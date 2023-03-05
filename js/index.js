@@ -24,6 +24,7 @@ class ToDoList {
     this.closeButton.classList.add("close-button");
     this.newLi.prepend(this.textLi);
     this.newLi.append(this.closeButton);
+    this.newLi.classList.add("added");
     completedTasks.append(this.newLi);
   }
 
