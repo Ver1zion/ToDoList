@@ -10,6 +10,7 @@ class ToDoList {
     this.closeButton.classList.add("close-button");
     this.newLi.prepend(this.textLi);
     this.newLi.append(this.closeButton);
+    this.newLi.classList.add("added");
     actualTasks.append(this.newLi);
     this.updateInputText();
   }
@@ -49,7 +50,14 @@ class ToDoList {
 
   deleteTask(event) {
     if (event.target.closest(".close-button")) {
-      event.target.closest("li").remove();
+      const liElem = event.target.closest("li");
+      liElem.classList.add("deleted");
+      liElem.classList.remove("added");
+      liElem.addEventListener("animationend", () => {
+        liElem.remove();
+        this.saveTasks();
+      });
+      // event.target.closest("li").remove();
     }
   }
 
@@ -95,7 +103,7 @@ newTaskButton.addEventListener("click", () => {
 
 textInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
-    toDoList.createNewTask();
+    toDoList.createNewTask(textInput.value);
     toDoList.updateInputText();
     toDoList.saveTasks();
   }
