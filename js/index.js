@@ -14,6 +14,18 @@ class ToDoList {
     this.updateInputText();
   }
 
+  createCompletedTask(taskText) {
+    this.taskText = taskText;
+    if (this.taskText === "") return;
+    this.newLi = document.createElement("li");
+    this.textLi = document.createTextNode(this.taskText);
+    this.closeButton = document.createElement("div");
+    this.closeButton.classList.add("close-button");
+    this.newLi.prepend(this.textLi);
+    this.newLi.append(this.closeButton);
+    completedTasks.append(this.newLi);
+  }
+
   updateInputText() {
     textInput.value = "";
   }
@@ -62,15 +74,7 @@ class ToDoList {
     }
     if (completedTaskArr) {
       completedTaskArr.forEach((taskText) => {
-        this.taskText = taskText;
-        if (this.taskText === "") return;
-        this.newLi = document.createElement("li");
-        this.textLi = document.createTextNode(this.taskText);
-        this.closeButton = document.createElement("div");
-        this.closeButton.classList.add("close-button");
-        this.newLi.prepend(this.textLi);
-        this.newLi.append(this.closeButton);
-        completedTasks.append(this.newLi);
+        this.createCompletedTask(taskText);
       });
     }
   }
