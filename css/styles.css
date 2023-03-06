@@ -24,7 +24,8 @@ img {
 }
 
 ::placeholder,
-input[type="text"] {
+textarea {
+  padding: 6px 0 0 0;
   color: rgba(148, 173, 207, 0.7);
   font-weight: 400;
   font-size: 16px;
@@ -42,7 +43,7 @@ input[type="text"] {
   justify-content: space-between;
   align-items: center;
   width: 578px;
-  height: 59px;
+  min-height: 59px;
   background: #38404b;
   box-shadow: 1px 1px 2px rgba(66, 75, 88, 0.3),
     -1px -1px 2px rgba(46, 53, 62, 0.5),
@@ -55,10 +56,12 @@ input[type="text"] {
 
 .input__form {
   width: 500px;
-  height: 18px;
-  margin: 0 0 0 38px;
+  min-height: 18px;
+  margin: 0 0 0px 38px;
   background: #38404b;
   border: none;
+  resize: none;
+  overflow: hidden;
 }
 
 .input__button {
@@ -73,7 +76,8 @@ input[type="text"] {
   display: block;
   margin-left: auto;
   position: absolute;
-  right: 100px;
+  right: 6vw;
+  top: 12.5vh;
   transition: 0.3s;
   width: 40px;
   cursor: pointer;
@@ -84,15 +88,18 @@ input[type="text"] {
 }
 
 .menu {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
-  right: 6%;
-  top: 12.5%;
+  right: 6vw;
+  top: 12.5vh;
   height: 0vh;
   width: 0vh;
   background-color: black;
   z-index: 10;
   cursor: default;
+  border-radius: 100px;
 }
 
 .menu > * {
@@ -106,7 +113,31 @@ input[type="text"] {
   border: none;
   background-color: black;
   position: absolute;
-  right: 0;
+  right: 45px;
+  top: 40px;
+}
+
+.resetData {
+  color: rgba(148, 173, 207, 0.7);
+  height: 40px;
+  width: 150px;
+  background: #38404b;
+  border-radius: 10px;
+  border: white;
+  transition: 0.2s;
+}
+
+.resetData:hover {
+  height: 41px;
+  width: 151px;
+  box-shadow: 0px 0px 33px 14px rgba(56, 64, 75, 0.85);
+}
+
+.resetData:active {
+  height: 40px;
+  width: 150px;
+  box-shadow: none;
+  transition: none;
 }
 
 .main-wrapp {
@@ -128,9 +159,10 @@ input[type="text"] {
 }
 
 .actual-tasks > li {
-  display: flex;
-  align-items: center;
-  height: 59px;
+  position: relative;
+  align-self: center;
+  max-width: 449px;
+  min-height: 59px;
   background: #38404b;
   box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
     5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
@@ -139,6 +171,9 @@ input[type="text"] {
   border-radius: 16px;
   cursor: pointer;
   transition: 0.3s;
+  word-wrap: break-word;
+  white-space: pre-line;
+  padding: 20px 45px 20px 45px;
 }
 
 .actual-tasks > li:hover {
@@ -158,10 +193,12 @@ input[type="text"] {
 
 .actual-tasks > li::before {
   display: inline-block;
+  position: absolute;
   content: "";
   height: 18px;
   width: 18px;
-  margin: 0 27px 0 24px;
+  left: 2%;
+  top: 15px;
   background-image: url(../img/svg/Ellipse_not_complete.svg);
 }
 
@@ -170,21 +207,26 @@ input[type="text"] {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 129px;
   row-gap: 52px;
+  margin: 0 0 50px 0;
 }
 
 .completed-tasks > li {
-  display: flex;
-  align-items: center;
-  height: 59px;
+  position: relative;
+  align-self: center;
+  max-width: 449px;
+  min-height: 59px;
+  padding: 20px 45px 20px 45px;
   background: #38404b;
   box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
     5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
     5px 5px 13px rgba(48, 54, 64, 0.9), inset 1px 1px 2px rgba(64, 74, 86, 0.3),
     inset -1px -1px 2px rgba(48, 54, 64, 0.5);
   border-radius: 16px;
-  text-decoration: line-through;
   cursor: pointer;
   transition: 0.3s;
+  word-wrap: break-word;
+  white-space: pre-line;
+  text-decoration: line-through;
 }
 
 .completed-tasks > li:hover {
@@ -204,19 +246,23 @@ input[type="text"] {
 
 .completed-tasks > li::before {
   display: inline-block;
+  position: absolute;
   content: "";
   height: 18px;
   width: 18px;
-  margin: 0 27px 0 24px;
+  left: 2%;
+  top: 15px;
   background-image: url(../img/svg/Ellipse_complete.svg);
 }
 
 .close-button {
+  position: absolute;
   opacity: 0;
   background-image: url(../img/icons8-close-30.png);
   height: 30px;
   width: 30px;
-  margin: 0 20px 0 auto;
+  right: 2%;
+  top: 10px;
 }
 
 .actual-tasks > li:hover > .close-button,

@@ -101,10 +101,11 @@ class BurgerMenu {
     childElements.forEach((element) => {
       element.style.display = "block";
     });
-    burgerActive.style.width = "100vw";
-    burgerActive.style.height = "100vh";
-    burgerActive.style.right = "0";
-    burgerActive.style.top = "0";
+    burgerActive.style.border = "2px solid white";
+    burgerActive.style.width = "60vw";
+    burgerActive.style.height = "60vh";
+    burgerActive.style.top = "20vh";
+    burgerActive.style.right = "20vw";
     burgerActive.style.transition = "0.3s";
   }
 
@@ -113,22 +114,47 @@ class BurgerMenu {
     childElements.forEach((element) => {
       element.style.display = "none";
     });
+    burgerActive.style.border = "";
     burgerActive.style.width = "0vw";
     burgerActive.style.height = "0vh";
-    burgerActive.style.right = "6%";
-    burgerActive.style.top = "12.5%";
+    burgerActive.style.right = "6vw";
+    burgerActive.style.top = "12.5vh";
     burgerActive.style.transition = "0.3s";
+  }
+
+  resetTasks() {
+    localStorage.removeItem("actualTasks");
+    localStorage.removeItem("completedTasks");
+    const allActualTasks = actualTasks.querySelectorAll("li");
+    allActualTasks.forEach((task) => {
+      task.remove();
+    });
+    const allCompletedTasks = completedTasks.querySelectorAll("li");
+    allCompletedTasks.forEach((task) => {
+      task.remove();
+    });
   }
 }
 
-const burgerButton = document.querySelector(".burger");
+const burgerOpen = document.querySelector(".burger");
 const burgerActive = document.querySelector(".menu");
 const burgerClose = document.querySelector(".menu__close-button");
+const resetButton = document.querySelector(".resetData");
 
-const toDoList = new ToDoList();
-const burgerMenu = new BurgerMenu();
+class TextAreaInput {
+  constructor() {}
 
-burgerButton.addEventListener("click", () => {
+  areaAutoHeight() {
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+    form.style.height = `${textarea.scrollHeight * 1.19}px`;
+  }
+}
+
+const textarea = document.querySelector(".input__form");
+const form = document.querySelector(".input");
+
+burgerOpen.addEventListener("click", () => {
   burgerMenu.openMenu();
 });
 
@@ -137,17 +163,26 @@ burgerClose.addEventListener("click", (event) => {
   burgerMenu.closeMenu();
 });
 
+resetButton.addEventListener("click", () => {
+  burgerMenu.resetTasks();
+});
+
 newTaskButton.addEventListener("click", () => {
   toDoList.createNewTask(textInput.value);
   toDoList.updateInputText();
   toDoList.saveTasks();
+  textAreaInput.areaAutoHeight();
 });
 
 textInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+  if (event.shiftKey && event.key === "Enter") {
+    return;
+  } else if (event.key === "Enter") {
+    event.preventDefault();
     toDoList.createNewTask(textInput.value);
     toDoList.updateInputText();
     toDoList.saveTasks();
+    textAreaInput.areaAutoHeight();
   }
 });
 
@@ -166,3 +201,11 @@ completedTasks.addEventListener("click", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
   toDoList.loadTasks();
 });
+
+textarea.addEventListener("input", () => {
+  textAreaInput.areaAutoHeight();
+});
+
+const toDoList = new ToDoList();
+const burgerMenu = new BurgerMenu();
+const textAreaInput = new TextAreaInput();
