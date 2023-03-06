@@ -165,6 +165,7 @@ burgerClose.addEventListener("click", (event) => {
 
 resetButton.addEventListener("click", () => {
   burgerMenu.resetTasks();
+  toDoList.saveTasks();
 });
 
 newTaskButton.addEventListener("click", () => {
@@ -199,6 +200,7 @@ completedTasks.addEventListener("click", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  toDoList.updateInputText();
   toDoList.loadTasks();
 });
 
