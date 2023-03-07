@@ -12,7 +12,6 @@ class ToDoList {
     this.newLi.append(this.closeButton);
     this.newLi.classList.add("added");
     actualTasks.append(this.newLi);
-    this.updateInputText();
   }
 
   createCompletedTask(taskText) {
@@ -26,10 +25,6 @@ class ToDoList {
     this.newLi.append(this.closeButton);
     this.newLi.classList.add("added");
     completedTasks.append(this.newLi);
-  }
-
-  updateInputText() {
-    textInput.value = "";
   }
 
   moveToCompleted(event) {
@@ -89,7 +84,6 @@ class ToDoList {
 }
 
 const newTaskButton = document.querySelector(".input__button");
-const textInput = document.querySelector(".input__form");
 const actualTasks = document.querySelector(".actual-tasks");
 const completedTasks = document.querySelector(".completed-tasks");
 
@@ -144,15 +138,49 @@ const resetButton = document.querySelector(".resetData");
 class TextAreaInput {
   constructor() {}
 
-  areaAutoHeight() {
-    textarea.style.height = "auto";
-    textarea.style.height = `${textarea.scrollHeight}px`;
-    form.style.height = `${textarea.scrollHeight * 1.19}px`;
+  addAutoHeight() {
+    textArea.style.height = "auto";
+    textArea.style.height = textArea.scrollHeight + "px";
+  }
+
+  updateInputText() {
+    textArea.value = "";
   }
 }
 
-const textarea = document.querySelector(".input__form");
+const textArea = document.querySelector(".input__form");
 const form = document.querySelector(".input");
+
+class Clock {
+  constructor(clockElement) {
+    this.clockElement = clockElement;
+  }
+
+  startClock() {
+    this.updateClock();
+    setInterval(() => {
+      this.updateClock();
+    }, 1000);
+  }
+
+  updateClock() {
+    const date = new Date();
+    const time = [date.getHours(), date.getMinutes(), date.getSeconds()];
+    if (time[0] < 10) {
+      time[0] = "0" + time[0];
+    }
+    if (time[1] < 10) {
+      time[1] = "0" + time[1];
+    }
+    if (time[2] < 10) {
+      time[2] = "0" + time[2];
+    }
+    const currentTime = [time[0], time[1], time[2]].join(":");
+    this.clockElement.innerText = currentTime;
+  }
+}
+
+const clockTextArea = document.querySelector(".clock");
 
 burgerOpen.addEventListener("click", () => {
   burgerMenu.openMenu();
@@ -169,21 +197,19 @@ resetButton.addEventListener("click", () => {
 });
 
 newTaskButton.addEventListener("click", () => {
-  toDoList.createNewTask(textInput.value);
-  toDoList.updateInputText();
+  toDoList.createNewTask(textArea.value);
+  textAreaInput.updateInputText();
   toDoList.saveTasks();
-  textAreaInput.areaAutoHeight();
 });
 
-textInput.addEventListener("keydown", (event) => {
+textArea.addEventListener("keydown", (event) => {
   if (event.shiftKey && event.key === "Enter") {
     return;
   } else if (event.key === "Enter") {
     event.preventDefault();
-    toDoList.createNewTask(textInput.value);
-    toDoList.updateInputText();
+    toDoList.createNewTask(textArea.value);
+    textAreaInput.updateInputText();
     toDoList.saveTasks();
-    textAreaInput.areaAutoHeight();
   }
 });
 
@@ -200,14 +226,16 @@ completedTasks.addEventListener("click", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  toDoList.updateInputText();
+  textAreaInput.updateInputText();
   toDoList.loadTasks();
+  clock.startClock();
 });
 
-textarea.addEventListener("input", () => {
-  textAreaInput.areaAutoHeight();
+textArea.addEventListener("input", () => {
+  textAreaInput.addAutoHeight();
 });
 
 const toDoList = new ToDoList();
 const burgerMenu = new BurgerMenu();
 const textAreaInput = new TextAreaInput();
+const clock = new Clock(clockTextArea);
