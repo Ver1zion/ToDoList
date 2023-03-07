@@ -198,8 +198,9 @@ resetButton.addEventListener("click", () => {
 
 newTaskButton.addEventListener("click", () => {
   toDoList.createNewTask(textArea.value);
-  textAreaInput.updateInputText();
   toDoList.saveTasks();
+  textAreaInput.updateInputText();
+  textAreaInput.addAutoHeight();
 });
 
 textArea.addEventListener("keydown", (event) => {
@@ -208,8 +209,9 @@ textArea.addEventListener("keydown", (event) => {
   } else if (event.key === "Enter") {
     event.preventDefault();
     toDoList.createNewTask(textArea.value);
-    textAreaInput.updateInputText();
     toDoList.saveTasks();
+    textAreaInput.updateInputText();
+    textAreaInput.addAutoHeight();
   }
 });
 
