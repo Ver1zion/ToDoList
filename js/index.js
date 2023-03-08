@@ -245,7 +245,9 @@ document.addEventListener("DOMContentLoaded", () => {
   textAreaInput.updateInputText();
   toDoList.loadTasks();
   clock.startClock();
-  clock.showSunOrMoon();
+  setInterval(() => {
+    clock.showSunOrMoon();
+  }, 1000);
 });
 
 textArea.addEventListener("input", () => {
