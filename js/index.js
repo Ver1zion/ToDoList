@@ -96,10 +96,10 @@ class BurgerMenu {
       element.style.display = "block";
     });
     burgerActive.style.border = "2px solid white";
-    burgerActive.style.width = "60vw";
+    burgerActive.style.width = "17vw";
     burgerActive.style.height = "60vh";
     burgerActive.style.top = "20vh";
-    burgerActive.style.right = "20vw";
+    burgerActive.style.right = "3vw";
     burgerActive.style.transition = "0.3s";
   }
 
@@ -178,9 +178,23 @@ class Clock {
     const currentTime = [time[0], time[1], time[2]].join(":");
     this.clockElement.innerText = currentTime;
   }
+
+  showSunOrMoon() {
+    const date = new Date();
+    if (date.getHours() >= 21 || date.getHours() < 7) {
+      sunOrMoon.classList.add("moon");
+      sunOrMoon.classList.remove("sun");
+      console.log("moon");
+    } else if (date.getHours() >= 7 || date.getHours() < 21) {
+      sunOrMoon.classList.remove("moon");
+      sunOrMoon.classList.add("sun");
+      console.log("sun");
+    }
+  }
 }
 
 const clockTextArea = document.querySelector(".clock");
+const sunOrMoon = document.querySelector(".sun-or-moon");
 
 burgerOpen.addEventListener("click", () => {
   burgerMenu.openMenu();
@@ -231,6 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   textAreaInput.updateInputText();
   toDoList.loadTasks();
   clock.startClock();
+  clock.showSunOrMoon();
 });
 
 textArea.addEventListener("input", () => {
