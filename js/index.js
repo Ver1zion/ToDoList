@@ -182,8 +182,8 @@ class Clock {
   showSunOrMoon() {
     const date = new Date();
     if (date.getHours() >= 21 || date.getHours() < 7) {
-      sunOrMoon.classList.add("moon");
       sunOrMoon.classList.remove("sun");
+      sunOrMoon.classList.add("moon");
       console.log("moon");
     } else if (date.getHours() >= 7 || date.getHours() < 21) {
       sunOrMoon.classList.remove("moon");
@@ -245,6 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   textAreaInput.updateInputText();
   toDoList.loadTasks();
   clock.startClock();
+  clock.showSunOrMoon();
   setInterval(() => {
     clock.showSunOrMoon();
   }, 1000);
