@@ -85,7 +85,7 @@ textarea {
 .burger {
   display: block;
   margin-left: auto;
-  position: absolute;
+  position: fixed;
   right: 6vw;
   top: 12.5vh;
   transition: 0.3s;
@@ -106,7 +106,7 @@ textarea {
   top: 12.5vh;
   height: 0vh;
   width: 0vh;
-  background-color: black;
+  background-color: rgba(148, 173, 207, 0.7);
   z-index: 10;
   cursor: default;
   border-radius: 100px;
@@ -114,17 +114,6 @@ textarea {
 
 .menu > * {
   display: none;
-}
-
-.menu__close-button {
-  background-image: url(../img/icons8-close-30.png);
-  height: 30px;
-  width: 30px;
-  border: none;
-  background-color: black;
-  position: absolute;
-  right: 45px;
-  top: 40px;
 }
 
 .resetData {

@@ -88,32 +88,40 @@ const actualTasks = document.querySelector(".actual-tasks");
 const completedTasks = document.querySelector(".completed-tasks");
 
 class BurgerMenu {
-  constructor() {}
+  constructor() {
+    this.menuBoolean = false;
+  }
 
   openMenu() {
-    const childElements = burgerActive.querySelectorAll("*");
-    childElements.forEach((element) => {
-      element.style.display = "block";
-    });
-    burgerActive.style.border = "2px solid white";
-    burgerActive.style.width = "17vw";
-    burgerActive.style.height = "60vh";
-    burgerActive.style.top = "20vh";
-    burgerActive.style.right = "3vw";
-    burgerActive.style.transition = "0.3s";
+    if (this.menuBoolean === false) {
+      this.menuBoolean = true;
+      const childElements = burgerActive.querySelectorAll("*");
+      childElements.forEach((element) => {
+        element.style.display = "block";
+      });
+      burgerActive.style.border = "2px solid white";
+      burgerActive.style.width = "17vw";
+      burgerActive.style.height = "60vh";
+      burgerActive.style.top = "20vh";
+      burgerActive.style.right = "3vw";
+      burgerActive.style.transition = "0.3s";
+    }
   }
 
   closeMenu() {
-    const childElements = burgerActive.querySelectorAll("*");
-    childElements.forEach((element) => {
-      element.style.display = "none";
-    });
-    burgerActive.style.border = "";
-    burgerActive.style.width = "0vw";
-    burgerActive.style.height = "0vh";
-    burgerActive.style.right = "6vw";
-    burgerActive.style.top = "12.5vh";
-    burgerActive.style.transition = "0.3s";
+    if (this.menuBoolean === true) {
+      this.menuBoolean = false;
+      const childElements = burgerActive.querySelectorAll("*");
+      childElements.forEach((element) => {
+        element.style.display = "none";
+      });
+      burgerActive.style.border = "";
+      burgerActive.style.width = "0vw";
+      burgerActive.style.height = "0vh";
+      burgerActive.style.right = "6vw";
+      burgerActive.style.top = "12.5vh";
+      burgerActive.style.transition = "0.3s";
+    }
   }
 
   resetTasks() {
@@ -197,12 +205,11 @@ const clockTextArea = document.querySelector(".clock");
 const sunOrMoon = document.querySelector(".sun-or-moon");
 
 burgerOpen.addEventListener("click", () => {
-  burgerMenu.openMenu();
-});
-
-burgerClose.addEventListener("click", (event) => {
-  event.stopPropagation();
-  burgerMenu.closeMenu();
+  if (burgerMenu.menuBoolean) { // false default value
+    burgerMenu.closeMenu();
+  } else {
+    burgerMenu.openMenu();
+  }
 });
 
 resetButton.addEventListener("click", () => {
