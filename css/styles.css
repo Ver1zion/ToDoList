@@ -272,12 +272,27 @@ textarea {
 
 .clock-container {
   position: absolute;
-  top: 0;
+  top: 0%;
   left: 50%;
   margin: 20px 0 0 -50px;
   min-width: 100px;
   text-align: center;
   user-select: none;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.clock-container_pos-header-absol {
+  top: 0%;
+  left: 50%;
+  margin: 20px 0 0 -50px;
+}
+
+.clock-container_pos-left-middle-fixed {
+  position: fixed;
+  left: 9%;
+  top: 50%;
+  margin: -25px 0 0 0;
 }
 
 .clock-description {
@@ -285,37 +300,48 @@ textarea {
   margin-bottom: 10px;
 }
 
-.clock_sun {
+.clock_text-sun {
   text-shadow: 0 0 2.5px rgb(177 176 43 / 70%), 0 0 5px rgb(179 154 68 / 70%),
     0 0 7.5px rgb(207 205 148 / 70%), 0 0 10px rgb(207 206 148 / 70%),
     0 0 12.5px rgb(211 191 73 / 70%), 0 0 15px rgb(169 167 77 / 70%),
     0 0 17.5px rgb(163 148 58 / 70%);
 }
-.clock_moon {
+.clock_text-moon {
   text-shadow: 0 0 2.5px rgba(148, 173, 207, 0.7),
     0 0 5px rgba(148, 173, 207, 0.7), 0 0 7.5px rgba(148, 173, 207, 0.7),
     0 0 10px rgba(148, 173, 207, 0.7), 0 0 12.5px rgba(148, 173, 207, 0.7),
     0 0 15px rgba(148, 173, 207, 0.7), 0 0 17.5px rgba(148, 173, 207, 0.7);
 }
 
-.sun {
+.sun-or-moon {
   position: absolute;
   width: 50px;
   height: 50px;
-  left: 43vw;
-  top: 2vh;
+  left: 43%;
+  top: 2%;
   border-radius: 50%;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.sun-or-moon_pos-header-absol {
+  left: 43%;
+  top: 2%;
+}
+
+.sun-or-moon_pos-left-middle-fixed {
+  position: fixed;
+  left: 9%;
+  top: 37%;
+  margin: 0 0 0 25px;
+}
+
+.sun {
   background-color: #e0dc9a;
   animation: sun 2s ease-in-out infinite alternate;
 }
 
 .moon {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  left: 43vw;
-  top: 2vh;
-  border-radius: 50%;
   background-color: #c2c5cc;
   animation: moon 2s ease-in-out infinite alternate;
 }

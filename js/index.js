@@ -191,16 +191,28 @@ class Clock {
     const date = new Date();
     if (date.getHours() >= 20 || date.getHours() < 7) {
       sunOrMoon.classList.remove("sun");
-      clockContainer.classList.remove("clock_sun");
+      clockContainer.classList.remove("clock_text-sun");
       sunOrMoon.classList.add("moon");
-      clockContainer.classList.add("clock_moon");
-      console.log("moon");
+      clockContainer.classList.add("clock_text-moon");
     } else if (date.getHours() >= 7 || date.getHours() < 20) {
       sunOrMoon.classList.remove("moon");
-      clockContainer.classList.remove("clock_moon");
+      clockContainer.classList.remove("clock_text-moon");
       sunOrMoon.classList.add("sun");
-      clockContainer.classList.add("clock_sun");
-      console.log("sun");
+      clockContainer.classList.add("clock_text-sun");
+    }
+  }
+
+  moveClockAndCosmicObject() {
+    if (window.pageYOffset < 100) {
+      clockContainer.classList.remove("clock-container_pos-left-middle-fixed");
+      sunOrMoon.classList.remove("sun-or-moon_pos-left-middle-fixed");
+      clockContainer.classList.add("clock-container_pos-header-absol");
+      sunOrMoon.classList.add("sun-or-moon_pos-header-absol");
+    } else if (window.pageYOffset >= 100) {
+      clockContainer.classList.remove("clock-container_pos-header-absol");
+      sunOrMoon.classList.remove("sun-or-moon_pos-header-absol");
+      clockContainer.classList.add("clock-container_pos-left-middle-fixed");
+      sunOrMoon.classList.add("sun-or-moon_pos-left-middle-fixed");
     }
   }
 }
@@ -254,6 +266,10 @@ completedTasks.addEventListener("click", (event) => {
   toDoList.saveTasks();
 });
 
+window.addEventListener("scroll", () => {
+  clock.moveClockAndCosmicObject();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   textAreaInput.updateInputText();
   toDoList.loadTasks();
@@ -261,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
   clock.showSunOrMoon();
   setInterval(() => {
     clock.showSunOrMoon();
-  }, 1000);
+  }, 0);
 });
 
 textArea.addEventListener("input", () => {
