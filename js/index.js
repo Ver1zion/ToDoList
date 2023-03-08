@@ -189,23 +189,29 @@ class Clock {
 
   showSunOrMoon() {
     const date = new Date();
-    if (date.getHours() >= 21 || date.getHours() < 7) {
+    if (date.getHours() >= 20 || date.getHours() < 7) {
       sunOrMoon.classList.remove("sun");
+      clockContainer.classList.remove("clock_sun");
       sunOrMoon.classList.add("moon");
+      clockContainer.classList.add("clock_moon");
       console.log("moon");
-    } else if (date.getHours() >= 7 || date.getHours() < 21) {
+    } else if (date.getHours() >= 7 || date.getHours() < 20) {
       sunOrMoon.classList.remove("moon");
+      clockContainer.classList.remove("clock_moon");
       sunOrMoon.classList.add("sun");
+      clockContainer.classList.add("clock_sun");
       console.log("sun");
     }
   }
 }
 
+const clockContainer = document.querySelector(".clock-container");
 const clockTextArea = document.querySelector(".clock");
 const sunOrMoon = document.querySelector(".sun-or-moon");
 
 burgerOpen.addEventListener("click", () => {
-  if (burgerMenu.menuBoolean) { // false default value
+  if (burgerMenu.menuBoolean) {
+    // false default value
     burgerMenu.closeMenu();
   } else {
     burgerMenu.openMenu();
