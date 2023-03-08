@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
   clock.showSunOrMoon();
   setInterval(() => {
     clock.showSunOrMoon();
-  }, 0);
+  }, 2000);
 });
 
 textArea.addEventListener("input", () => {

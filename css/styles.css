@@ -18,6 +18,10 @@ body {
   background: #38404b;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 img {
   width: 100%;
   height: auto;
@@ -88,13 +92,18 @@ textarea {
   position: fixed;
   right: 6vw;
   top: 12.5vh;
-  transition: 0.3s;
+  transition: 0.2s;
   width: 40px;
   cursor: pointer;
 }
 
 .burger:hover {
-  width: 35px;
+  width: 45px;
+}
+
+.burger:active {
+  width: 40px;
+  transition: 0s;
 }
 
 .menu {
