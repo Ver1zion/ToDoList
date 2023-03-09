@@ -5,6 +5,7 @@ html {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
+  user-select: none;
 }
 
 *,
@@ -303,7 +304,6 @@ textarea {
   margin: 20px 0 0 -50px;
   min-width: 100px;
   text-align: center;
-  user-select: none;
   transition: 0.3s;
   z-index: 10;
 }
