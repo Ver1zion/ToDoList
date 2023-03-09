@@ -147,8 +147,12 @@ class TextAreaInput {
   constructor() {}
 
   addAutoHeight() {
-    textArea.style.height = "auto";
-    textArea.style.height = textArea.scrollHeight + "px";
+    if (textArea.scrollHeight >= 201) {
+      textArea.style.height = "auto";
+      textArea.style.height = textArea.scrollHeight + "px";
+    } else if (textArea.scrollHeight < 201) {
+      textArea.style.height = "18px";
+    }
   }
 
   updateInputText() {
@@ -283,6 +287,10 @@ document.addEventListener("DOMContentLoaded", () => {
 textArea.addEventListener("input", () => {
   textAreaInput.addAutoHeight();
 });
+
+form.addEventListener("focusout", () => {
+  textAreaInput.addAutoHeight();
+}); // using to 
 
 const toDoList = new ToDoList();
 const burgerMenu = new BurgerMenu();

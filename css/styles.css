@@ -76,6 +76,23 @@ textarea {
   border: none;
   resize: none;
   overflow: hidden;
+  transition: 0.2s;
+}
+
+.input:hover > .input__form {
+  min-height: 200px;
+}
+
+.input__form:focus {
+  min-height: 200px;
+}
+
+.input__form:focus::placeholder {
+  color: transparent;
+}
+
+.input:hover > .input__form::placeholder {
+  color: transparent;
 }
 
 .input__button {
