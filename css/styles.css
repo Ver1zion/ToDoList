@@ -223,8 +223,8 @@ textarea {
   content: "";
   height: 18px;
   width: 18px;
-  left: 2%;
-  top: 9px;
+  left: 6px;
+  top: 6px;
   background-image: url(../img/svg/Ellipse_not_complete.svg);
 }
 
@@ -272,8 +272,8 @@ textarea {
   content: "";
   height: 18px;
   width: 18px;
-  left: 2%;
-  top: 9px;
+  left: 5px;
+  top: 5px;
   background-image: url(../img/svg/Ellipse_complete.svg);
 }
 
@@ -281,10 +281,11 @@ textarea {
   position: absolute;
   opacity: 0;
   background-image: url(../img/icons8-close-30.png);
-  height: 30px;
-  width: 30px;
-  right: 2%;
-  top: 10px;
+  height: 22px;
+  width: 22px;
+  background-size: cover;
+  right: 5px;
+  top: 5px;
 }
 
 .actual-tasks > li:hover > .close-button,
