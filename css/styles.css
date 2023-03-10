@@ -7,6 +7,13 @@ html {
   line-height: 21px;
   user-select: none;
 }
+canvas {
+position: absolute;
+height: 100vh ;
+top: 0;
+left: 0;
+z-index: -1;
+}
 
 *,
 *::after,
@@ -49,7 +56,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px 0 100px 0;
+  margin: 150px 0 100px 0;
 }
 .input {
   display: flex;
@@ -294,28 +301,39 @@ textarea {
   transition: 0.5s;
 }
 
-.clock-container {
+.clock-cosmic-object__container {
   position: absolute;
-  top: 0%;
   left: 50%;
-  margin: 20px 0 0 -50px;
-  min-width: 100px;
-  text-align: center;
-  transition: 0.3s;
-  z-index: 10;
+  top: 45px;
+  margin: 0 0 0 -90px;
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
 }
 
-.clock-container_pos-header-absol {
-  top: 0%;
-  left: 50%;
-  margin: 20px 0 0 -50px;
+@keyframes move {
+  0% { top: 0; left: 0; }
+  25% { top: 50px; left: 100px; }
+  50% { top: 150px; left: 50px; }
+  75% { top: 100px; left: -50px; }
+ 100% { top: -50px; left: -100px; }
 }
 
-.clock-container_pos-left-middle-fixed {
+.clock-cosmic-object__container_pos-left-fixed {
   position: fixed;
   left: 9%;
   top: 50%;
-  margin: -25px 0 0 0;
+  margin: -68px 0 0 0;
+  gap: 40px;
+  flex-direction: column;
+}
+
+.clock-container {
+  position: relative;
+  min-width: 100px;
+  text-align: center;
 }
 
 .clock-description {
@@ -337,26 +355,10 @@ textarea {
 }
 
 .cosmic-object {
-  position: absolute;
+  position: relative;
   width: 50px;
   height: 50px;
-  left: 43%;
-  top: 2%;
   border-radius: 50%;
-  transition: 0.3s;
-  z-index: 10;
-}
-
-.cosmic-object_pos-header-absol {
-  left: 43%;
-  top: 2%;
-}
-
-.cosmic-object_pos-left-middle-fixed {
-  position: fixed;
-  left: 9%;
-  top: 37%;
-  margin: 0 0 0 25px;
 }
 
 .sun {

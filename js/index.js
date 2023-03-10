@@ -207,20 +207,21 @@ class Clock {
   }
 
   moveClockAndCosmicObject() {
-    if (window.pageYOffset < 100) {
-      clockContainer.classList.remove("clock-container_pos-left-middle-fixed");
-      cosmicObject.classList.remove("cosmic-object_pos-left-middle-fixed");
-      clockContainer.classList.add("clock-container_pos-header-absol");
-      cosmicObject.classList.add("cosmic-object_pos-header-absol");
-    } else if (window.pageYOffset >= 100) {
-      clockContainer.classList.remove("clock-container_pos-header-absol");
-      cosmicObject.classList.remove("cosmic-object_pos-header-absol");
-      clockContainer.classList.add("clock-container_pos-left-middle-fixed");
-      cosmicObject.classList.add("cosmic-object_pos-left-middle-fixed");
+    if (window.pageYOffset < 1) {
+      clockAndCosmicObject.classList.remove(
+        "clock-cosmic-object__container_pos-left-fixed"
+      );
+    } else if (window.pageYOffset >= 1) {
+      clockAndCosmicObject.classList.add(
+        "clock-cosmic-object__container_pos-left-fixed"
+      );
     }
   }
 }
 
+const clockAndCosmicObject = document.querySelector(
+  ".clock-cosmic-object__container"
+);
 const clockContainer = document.querySelector(".clock-container");
 const clockTextArea = document.querySelector(".clock");
 const cosmicObject = document.querySelector(".cosmic-object");
