@@ -147,10 +147,10 @@ class TextAreaInput {
   constructor() {}
 
   addAutoHeight() {
-    if (textArea.scrollHeight >= 201) {
+    if (textArea.scrollHeight >= 151) {
       textArea.style.height = "auto";
       textArea.style.height = textArea.scrollHeight + "px";
-    } else if (textArea.scrollHeight < 201) {
+    } else if (textArea.scrollHeight < 151) {
       textArea.style.height = "20px";
     }
   }
@@ -191,17 +191,17 @@ class Clock {
     this.clockElement.innerText = currentTime;
   }
 
-  showSunOrMoon() {
+  showCosmicObject() {
     const date = new Date();
     if (date.getHours() >= 20 || date.getHours() < 7) {
-      sunOrMoon.classList.remove("sun");
+      cosmicObject.classList.remove("sun");
       clockContainer.classList.remove("clock_text-sun");
-      sunOrMoon.classList.add("moon");
+      cosmicObject.classList.add("moon");
       clockContainer.classList.add("clock_text-moon");
     } else if (date.getHours() >= 7 || date.getHours() < 20) {
-      sunOrMoon.classList.remove("moon");
+      cosmicObject.classList.remove("moon");
       clockContainer.classList.remove("clock_text-moon");
-      sunOrMoon.classList.add("sun");
+      cosmicObject.classList.add("sun");
       clockContainer.classList.add("clock_text-sun");
     }
   }
@@ -209,21 +209,21 @@ class Clock {
   moveClockAndCosmicObject() {
     if (window.pageYOffset < 100) {
       clockContainer.classList.remove("clock-container_pos-left-middle-fixed");
-      sunOrMoon.classList.remove("sun-or-moon_pos-left-middle-fixed");
+      cosmicObject.classList.remove("cosmic-object_pos-left-middle-fixed");
       clockContainer.classList.add("clock-container_pos-header-absol");
-      sunOrMoon.classList.add("sun-or-moon_pos-header-absol");
+      cosmicObject.classList.add("cosmic-object_pos-header-absol");
     } else if (window.pageYOffset >= 100) {
       clockContainer.classList.remove("clock-container_pos-header-absol");
-      sunOrMoon.classList.remove("sun-or-moon_pos-header-absol");
+      cosmicObject.classList.remove("cosmic-object_pos-header-absol");
       clockContainer.classList.add("clock-container_pos-left-middle-fixed");
-      sunOrMoon.classList.add("sun-or-moon_pos-left-middle-fixed");
+      cosmicObject.classList.add("cosmic-object_pos-left-middle-fixed");
     }
   }
 }
 
 const clockContainer = document.querySelector(".clock-container");
 const clockTextArea = document.querySelector(".clock");
-const sunOrMoon = document.querySelector(".sun-or-moon");
+const cosmicObject = document.querySelector(".cosmic-object");
 
 burgerOpen.addEventListener("click", () => {
   if (burgerMenu.menuBoolean) {
@@ -278,9 +278,9 @@ document.addEventListener("DOMContentLoaded", () => {
   textAreaInput.updateInputText();
   toDoList.loadTasks();
   clock.startClock();
-  clock.showSunOrMoon();
+  clock.showCosmicObject();
   setInterval(() => {
-    clock.showSunOrMoon();
+    clock.showCosmicObject();
   }, 2000);
 });
 
@@ -290,7 +290,7 @@ textArea.addEventListener("input", () => {
 
 form.addEventListener("focusout", () => {
   textAreaInput.addAutoHeight();
-}); // using to 
+});
 
 const toDoList = new ToDoList();
 const burgerMenu = new BurgerMenu();

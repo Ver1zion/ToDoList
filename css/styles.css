@@ -81,11 +81,11 @@ textarea {
 }
 
 .input:hover > .input__form {
-  min-height: 200px;
+  min-height: 150px;
 }
 
 .input__form:focus {
-  min-height: 200px;
+  min-height: 150px;
 }
 
 .input__form:focus::placeholder {
@@ -263,10 +263,6 @@ textarea {
 }
 
 .completed-tasks > li:active {
-  box-shadow: -5px 5px 10px rgba(48, 54, 64, 0.2),
-    5px -5px 10px rgba(48, 54, 64, 0.2), -5px -5px 10px rgba(64, 74, 86, 0.9),
-    5px 5px 13px rgba(48, 54, 64, 0.9), inset 1px 1px 2px rgba(64, 74, 86, 0.3),
-    inset -1px -1px 2px rgba(48, 54, 64, 0.5);
   transition: none;
 }
 
@@ -339,7 +335,7 @@ textarea {
     0 0 15px rgba(148, 173, 207, 0.7), 0 0 17.5px rgba(148, 173, 207, 0.7);
 }
 
-.sun-or-moon {
+.cosmic-object {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -350,12 +346,12 @@ textarea {
   z-index: 10;
 }
 
-.sun-or-moon_pos-header-absol {
+.cosmic-object_pos-header-absol {
   left: 43%;
   top: 2%;
 }
 
-.sun-or-moon_pos-left-middle-fixed {
+.cosmic-object_pos-left-middle-fixed {
   position: fixed;
   left: 9%;
   top: 37%;
