@@ -106,6 +106,38 @@ textarea {
   border: none;
 }
 
+.input-mobile {
+  display: none;
+  position: fixed;
+  left: 6vw;
+  top: 6vh;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(148, 173, 207);
+  border-radius: 50%;
+  background: transparent;
+  z-index: 5;
+}
+
+.input-mobile div:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -0.5px 0 0 -5px;
+  width: 10px;
+  border: 1px solid rgba(148, 173, 207);
+}
+
+.input-mobile div:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -0.5px 0 0 -5px;
+  width: 10px;
+  border: 1px solid rgba(148, 173, 207);
+  transform: rotate(90deg);
+}
+
 .burger {
   display: block;
   margin-left: auto;
@@ -115,7 +147,7 @@ textarea {
   transition: 0.2s;
   width: 40px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
 }
 
 .burger:hover {
@@ -133,7 +165,7 @@ textarea {
   align-items: center;
   position: fixed;
   right: 6vw;
-  top: 12.5vh;
+  top: 6vh;
   height: 0vh;
   width: 0vh;
   background: rgba(0, 0, 0, 0.7);
@@ -443,4 +475,69 @@ textarea {
 
 .added {
   animation: scaleIn 0.3s;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .header-container {
+    margin-top: 50px;
+  }
+  .clock-cosmic-object__container {
+    position: fixed;
+    left: 9%;
+    top: 50%;
+    margin: 0px 0 0 0;
+  }
+  .cosmic-object {
+    height: 25px;
+    width: 25px;
+  }
+  .clock-container {
+    display: none;
+  }
+  .input {
+    position: absolute;
+    top: 28px;
+    width: 200px;
+    z-index: 10;
+  }
+  .input:focus-within {
+    background: black;
+  }
+  .input-mobile {
+    display: block;
+  }
+  .burger {
+    top: 6vh;
+    width: 30px;
+  }
+  .actual-tasks,
+  .completed-tasks {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 52px;
+    padding: 0 15px 0 15px;
+  }
+  .actual-tasks > li,
+  .completed-tasks > li {
+    min-width: 200px;
+    min-height: 1px;
+    padding: 10px 31px 10px 31px;
+  }
+  .completed-tasks {
+    margin-bottom: 100px;
+  }
+  .close-button {
+    opacity: 1;
+  }
+  .main-wrapp > h1 {
+    padding-left: 40px;
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
