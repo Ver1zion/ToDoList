@@ -133,11 +133,17 @@ class BurgerMenu {
       task.classList.add("deleted");
       setTimeout(() => {
         task.remove();
+        toDoList.saveTasks();
       }, 300);
     });
     const allCompletedTasks = completedTasks.querySelectorAll("li");
     allCompletedTasks.forEach((task) => {
-      task.remove();
+      task.classList.remove("added");
+      task.classList.add("deleted");
+      setTimeout(() => {
+        task.remove();
+        toDoList.saveTasks();
+      }, 300);
     });
   }
 }
@@ -241,7 +247,6 @@ burgerOpen.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
   burgerMenu.resetTasks();
-  toDoList.saveTasks();
 });
 
 newTaskButton.addEventListener("click", () => {
