@@ -328,12 +328,12 @@ class StarryBackground {
   }
 
   update(speed) {
-    for (let star of this.starCount) {
+    this.starCount.forEach((star) => {
       star.x -= speed;
       if (star.x < 0) {
         star.x = canvas.width;
       }
-    }
+    });
   }
 }
 
