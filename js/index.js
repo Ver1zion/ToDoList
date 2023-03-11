@@ -151,7 +151,7 @@ class TextAreaInput {
       textArea.style.height = "auto";
       textArea.style.height = textArea.scrollHeight + "px";
     } else if (textArea.scrollHeight < 151) {
-      textArea.style.height = "20px";
+      textArea.style.height = "40px";
     }
   }
 

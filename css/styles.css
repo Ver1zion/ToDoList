@@ -194,7 +194,7 @@ textarea {
   min-height: 59px;
   background: transparent;
   border-radius: 16px;
-  border: 1px solid rgba(148, 173, 207);;
+  border: 1px solid rgba(148, 173, 207);
   cursor: pointer;
   transition: 0.2s;
   word-wrap: break-word;
