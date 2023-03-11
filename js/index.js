@@ -297,3 +297,56 @@ const toDoList = new ToDoList();
 const burgerMenu = new BurgerMenu();
 const textAreaInput = new TextAreaInput();
 const clock = new Clock(clockTextArea);
+
+//////////////////////////////////////////
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+const requestAnimationFrame = window.requestAnimationFrame;
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+class StarryBackground {
+  constructor(starCount) {
+    this.starCount = [];
+    for (let i = 0; i < starCount; i++) {
+      this.starCount.push({
+        x: Math.random() * (canvas.width - 1),
+        y: Math.random() * (canvas.height - 1),
+        radius: Math.random() * 2,
+      });
+    }
+  }
+
+  draw() {
+    for (let star of this.starCount) {
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
+  }
+
+  update(speed) {
+    for (let star of this.starCount) {
+      star.x -= speed;
+      if (star.x < 0) {
+        star.x = canvas.width;
+      }
+    }
+  }
+}
+
+const slowStars = new StarryBackground(250);
+const fastStars = new StarryBackground(150);
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  fastStars.update(0.15);
+  fastStars.draw();
+  slowStars.update(0.05);
+  slowStars.draw();
+  requestAnimationFrame(animate);
+}
+
+animate();
