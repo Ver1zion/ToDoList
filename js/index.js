@@ -129,7 +129,11 @@ class BurgerMenu {
     localStorage.removeItem("completedTasks");
     const allActualTasks = actualTasks.querySelectorAll("li");
     allActualTasks.forEach((task) => {
-      task.remove();
+      task.classList.remove("added");
+      task.classList.add("deleted");
+      setTimeout(() => {
+        task.remove();
+      }, 300);
     });
     const allCompletedTasks = completedTasks.querySelectorAll("li");
     allCompletedTasks.forEach((task) => {
