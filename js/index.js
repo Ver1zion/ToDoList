@@ -311,6 +311,10 @@ if (window.innerWidth > 768) {
       textAreaInput.addAutoHeight();
     }
   });
+
+  window.addEventListener("scroll", () => {
+    clock.moveClockAndCosmicObject();
+  });
 }
 
 actualTasks.addEventListener("click", (event) => {
@@ -323,10 +327,6 @@ completedTasks.addEventListener("click", (event) => {
   toDoList.moveToActual(event);
   toDoList.deleteTask(event);
   toDoList.saveTasks();
-});
-
-window.addEventListener("scroll", () => {
-  clock.moveClockAndCosmicObject();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -358,7 +358,7 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const requestAnimationFrame = window.requestAnimationFrame;
 
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight * 4;
 canvas.width = window.innerWidth;
 
 class StarryBackground {
