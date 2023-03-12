@@ -537,6 +537,7 @@ textarea {
   }
   .actual-tasks > li,
   .completed-tasks > li {
+    max-width: 300px;
     min-width: 200px;
     min-height: 1px;
     padding: 10px 31px 10px 31px;
