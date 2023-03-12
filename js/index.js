@@ -262,7 +262,7 @@ class InputMobile {
 const inputMobileButton = document.querySelector(".input-mobile-button");
 
 if (window.innerWidth <= 768) {
-  inputMobileButton.addEventListener("click", () => {
+  inputMobileButton.addEventListener("click" || "touchend", () => {
     if (inputMobile.inputOpened) {
       inputMobile.closeInput();
       textAreaInput.updateInputText();
@@ -299,17 +299,19 @@ newTaskButton.addEventListener("click", () => {
   textAreaInput.addAutoHeight();
 });
 
-textArea.addEventListener("keydown", (event) => {
-  if (event.shiftKey && event.key === "Enter") {
-    return;
-  } else if (event.key === "Enter") {
-    event.preventDefault();
-    toDoList.createNewTask(textArea.value);
-    toDoList.saveTasks();
-    textAreaInput.updateInputText();
-    textAreaInput.addAutoHeight();
-  }
-});
+if (window.innerWidth > 768) {
+  textArea.addEventListener("keydown", (event) => {
+    if (event.shiftKey && event.key === "Enter") {
+      return;
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      toDoList.createNewTask(textArea.value);
+      toDoList.saveTasks();
+      textAreaInput.updateInputText();
+      textAreaInput.addAutoHeight();
+    }
+  });
+}
 
 actualTasks.addEventListener("click", (event) => {
   toDoList.moveToCompleted(event);
