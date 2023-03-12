@@ -538,6 +538,9 @@ textarea {
     row-gap: 52px;
     padding: 0 15px 0 15px;
   }
+  .completed-tasks {
+    margin-bottom: 100px;
+  }
   .actual-tasks > li,
   .completed-tasks > li {
     max-width: 300px;
