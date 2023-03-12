@@ -1,4 +1,5 @@
 html {
+  height: 100vh;
   box-sizing: border-box;
   color: rgba(148, 173, 207);
   font-family: "Shantell Sans", cursive;
