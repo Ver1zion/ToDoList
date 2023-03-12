@@ -519,7 +519,7 @@ textarea {
   }
   .input__button {
     position: fixed;
-    left: 87%;
+    left: 100%;
     width: 30px;
   }
   .input-mobile-button {
