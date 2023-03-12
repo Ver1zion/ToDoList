@@ -299,17 +299,17 @@ newTaskButton.addEventListener("click", () => {
   textAreaInput.addAutoHeight();
 });
 
-textArea.addEventListener("keydown", (event) => {
-  if (event.shiftKey && event.key === "Enter") {
-    return;
-  } else if (event.key === "Enter") {
-    event.preventDefault();
-    toDoList.createNewTask(textArea.value);
-    toDoList.saveTasks();
-    textAreaInput.updateInputText();
-    textAreaInput.addAutoHeight();
-  }
-});
+// textArea.addEventListener("keydown", (event) => {
+//   if (event.shiftKey && event.key === "Enter") {
+//     return;
+//   } else if (event.key === "Enter") {
+//     event.preventDefault();
+//     toDoList.createNewTask(textArea.value);
+//     toDoList.saveTasks();
+//     textAreaInput.updateInputText();
+//     textAreaInput.addAutoHeight();
+//   }
+// });
 
 actualTasks.addEventListener("click", (event) => {
   toDoList.moveToCompleted(event);
