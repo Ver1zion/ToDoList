@@ -58,6 +58,7 @@ textarea {
   align-items: center;
   margin: 150px 0 100px 0;
 }
+
 .input {
   display: flex;
   justify-content: space-between;
@@ -106,9 +107,11 @@ textarea {
   border: none;
 }
 
-.input-mobile {
-  display: none;
+.input-mobile-button {
   position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
   left: 6vw;
   top: 6vh;
   width: 30px;
@@ -117,23 +120,20 @@ textarea {
   border-radius: 50%;
   background: transparent;
   z-index: 5;
+  transition: 0.2s;
 }
 
-.input-mobile div:first-child {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -0.5px 0 0 -5px;
+.input-mobile-button > div:first-child {
   width: 10px;
   border: 1px solid rgba(148, 173, 207);
 }
 
-.input-mobile div:nth-child(2) {
+.input-mobile-button > div:nth-child(2) {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -0.5px 0 0 -5px;
   width: 10px;
+  margin: -1px 0 0 -5px;
   border: 1px solid rgba(148, 173, 207);
   transform: rotate(90deg);
 }
@@ -165,7 +165,7 @@ textarea {
   align-items: center;
   position: fixed;
   right: 6vw;
-  top: 6vh;
+  top: 12.5vh;
   height: 0vh;
   width: 0vh;
   background: rgba(0, 0, 0, 0.7);
@@ -483,6 +483,9 @@ textarea {
     font-size: 14px;
     line-height: 16px;
   }
+  .input__form::placeholder {
+    opacity: 0;
+  }
   .header-container {
     margin-top: 50px;
   }
@@ -500,16 +503,25 @@ textarea {
     display: none;
   }
   .input {
-    position: absolute;
-    top: 28px;
-    width: 200px;
+    position: fixed;
+    top: 10%;
+    width: 70%;
+    margin: 0 0 0 0;
     z-index: 10;
+    transform: scale(0);
   }
   .input:focus-within {
     background: black;
   }
-  .input-mobile {
-    display: block;
+  .input__form {
+    width: 100%;
+    margin: 0 20px 0 20px;
+  }
+  .input__button {
+    display: none;
+  }
+  .input-mobile-button {
+    display: flex;
   }
   .burger {
     top: 6vh;
@@ -529,8 +541,12 @@ textarea {
     min-height: 1px;
     padding: 10px 31px 10px 31px;
   }
-  .completed-tasks {
-    margin-bottom: 100px;
+  .actual-tasks > li:hover,
+  .completed-tasks > li:hover,
+  .actual-tasks > li:active,
+  .completed-tasks > li:active {
+    box-shadow: none;
+    border: 1px solid rgba(148, 173, 207);
   }
   .close-button {
     opacity: 1;

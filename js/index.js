@@ -93,7 +93,6 @@ class BurgerMenu {
       childElements.forEach((element) => {
         element.style.display = "block";
       });
-      burgerActive.style.border = "2px solid white";
       burgerActive.style.width = "100vw";
       burgerActive.style.height = "100vh";
       burgerActive.style.top = "0vh";
@@ -105,7 +104,6 @@ class BurgerMenu {
       childElements.forEach((element) => {
         element.style.display = "block";
       });
-      burgerActive.style.border = "2px solid rgba(148, 173, 207)";
       burgerActive.style.width = "17vw";
       burgerActive.style.height = "60vh";
       burgerActive.style.top = "20vh";
@@ -123,8 +121,11 @@ class BurgerMenu {
     burgerActive.style.width = "0vw";
     burgerActive.style.height = "0vh";
     burgerActive.style.right = "6vw";
-    burgerActive.style.top = "6vh";
-    burgerActive.style.transition = "0.3s";
+    if (window.innerWidth < 768) {
+      burgerActive.style.top = "6vh";
+    } else {
+      burgerActive.style.top = "12.5vh";
+    }
   }
 
   resetTasks() {
@@ -174,7 +175,6 @@ class TextAreaInput {
 }
 
 const textArea = document.querySelector(".input__form");
-const teaxAreaMobile = document.querySelector(".input-mobile")
 const form = document.querySelector(".input");
 
 class Clock {
@@ -240,6 +240,44 @@ const clockAndCosmicObject = document.querySelector(
 const clockContainer = document.querySelector(".clock-container");
 const clockTextArea = document.querySelector(".clock");
 const cosmicObject = document.querySelector(".cosmic-object");
+
+class InputMobile {
+  constructor() {
+    this.inputOpened = false;
+  }
+
+  openInput() {
+    form.style.transform = "scale(1)";
+    inputMobileButton.style.transform = "rotate(45deg)";
+    inputMobile.inputOpened = true;
+  }
+
+  closeInput() {
+    form.style.transform = "scale(0)";
+    inputMobileButton.style.transform = "rotate(0deg)";
+    inputMobile.inputOpened = false;
+  }
+}
+
+const inputMobileButton = document.querySelector(".input-mobile-button");
+
+if (window.innerWidth <= 768) {
+  inputMobileButton.addEventListener("click", () => {
+    if (inputMobile.inputOpened) {
+      inputMobile.closeInput();
+      textAreaInput.updateInputText();
+    } else {
+      inputMobile.openInput();
+      textArea.focus();
+    }
+  });
+  textArea.addEventListener("focusout", () => {
+    setTimeout(() => {
+      inputMobile.closeInput();
+      textAreaInput.updateInputText();
+    }, 1);
+  });
+}
 
 burgerOpen.addEventListener("click", () => {
   if (burgerMenu.menuOpened) {
@@ -311,6 +349,7 @@ const toDoList = new ToDoList();
 const burgerMenu = new BurgerMenu();
 const textAreaInput = new TextAreaInput();
 const clock = new Clock(clockTextArea);
+const inputMobile = new InputMobile();
 
 //////////////////////////////////////////
 const canvas = document.querySelector("canvas");
