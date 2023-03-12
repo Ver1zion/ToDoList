@@ -521,7 +521,8 @@ textarea {
   .input__button {
     position: fixed;
     left: 100%;
-    width: 30px;
+    width: 40px;
+    height: 40px;
   }
   .input-mobile-button {
     display: flex;
@@ -538,15 +539,16 @@ textarea {
     row-gap: 52px;
     padding: 0 15px 0 15px;
   }
-  .completed-tasks {
-    margin-bottom: 100px;
-  }
+
   .actual-tasks > li,
   .completed-tasks > li {
     max-width: 300px;
     min-width: 200px;
     min-height: 1px;
     padding: 10px 31px 10px 31px;
+  }
+  .completed-tasks > li:last-child {
+    margin-bottom: 100px;
   }
   .actual-tasks > li:hover,
   .completed-tasks > li:hover,
