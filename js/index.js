@@ -358,7 +358,7 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const requestAnimationFrame = window.requestAnimationFrame;
 
-canvas.height = window.innerHeight * 4;
+canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
 class StarryBackground {

@@ -518,6 +518,8 @@ textarea {
     margin: 0 20px 0 20px;
   }
   .input__button {
+    position: fixed;
+    left: 87%;
     width: 30px;
   }
   .input-mobile-button {
