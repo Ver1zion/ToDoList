@@ -10,7 +10,8 @@ html {
 canvas {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  height: -webkit-fill-available;
   display: block;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   top: 0;
