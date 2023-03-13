@@ -367,8 +367,8 @@ class StarryBackground {
     this.starArray = [];
     for (let i = 0; i < starCount; i++) {
       this.starArray.push({
-        x: Math.random() * (canvas.width - 1),
-        y: Math.random() * (canvas.height - 1),
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
         radius: Math.random() * 2,
       });
     }
