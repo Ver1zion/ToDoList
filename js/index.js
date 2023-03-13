@@ -262,7 +262,7 @@ class InputMobile {
 const inputMobileButton = document.querySelector(".input-mobile-button");
 
 if (window.innerWidth <= 768) {
-  inputMobileButton.addEventListener("click" || "touchend", () => {
+  inputMobileButton.addEventListener("click", () => {
     if (inputMobile.inputOpened) {
       inputMobile.closeInput();
       textAreaInput.updateInputText();
@@ -271,11 +271,12 @@ if (window.innerWidth <= 768) {
       textArea.focus();
     }
   });
+
   textArea.addEventListener("focusout", () => {
     setTimeout(() => {
       inputMobile.closeInput();
       textAreaInput.updateInputText();
-    }, 1);
+    }, 1); // used to close input if user click on button
   });
 }
 
