@@ -2,7 +2,11 @@ import { toDoList, actualTasks, completedTasks } from "./classes/todolist.js";
 import { burgerMenu } from "./classes/burger_menu.js";
 import { textAreaInput, textArea } from "./classes/text_area_input.js";
 import { clock } from "./classes/clock.js";
-import { inputMobile, form, inputMobileButton } from "./classes/input_mobile.js";
+import {
+  inputMobile,
+  form,
+  inputMobileButton,
+} from "./classes/input_mobile.js";
 import {
   slowStars,
   mediumSpeedStars,
