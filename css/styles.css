@@ -204,6 +204,10 @@ textarea {
   transition: none;
 }
 
+.main {
+  border-bottom: 50px solid transparent;
+}
+
 .main-wrapp {
   max-width: 1027px;
   margin: 0 auto;
@@ -272,7 +276,6 @@ textarea {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 129px;
   row-gap: 52px;
-  margin: 0 0 50px 0;
 }
 
 .completed-tasks > li {
@@ -289,6 +292,10 @@ textarea {
   word-wrap: break-word;
   white-space: pre-line;
   text-decoration: line-through;
+}
+
+.completed-tasks > li:nth-last-child(-n+2) {
+  
 }
 
 .completed-tasks > li:hover {
@@ -348,29 +355,6 @@ textarea {
   justify-content: center;
   align-items: center;
   transition: 0.2s;
-}
-
-@keyframes move {
-  0% {
-    top: 0;
-    left: 0;
-  }
-  25% {
-    top: 50px;
-    left: 100px;
-  }
-  50% {
-    top: 150px;
-    left: 50px;
-  }
-  75% {
-    top: 100px;
-    left: -50px;
-  }
-  100% {
-    top: -50px;
-    left: -100px;
-  }
 }
 
 .clock-cosmic-object__container_pos-left-fixed {
@@ -541,7 +525,6 @@ textarea {
     row-gap: 52px;
     padding: 0 15px 0 15px;
   }
-
   .actual-tasks > li,
   .completed-tasks > li {
     max-width: 300px;
