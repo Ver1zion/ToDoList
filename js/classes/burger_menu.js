@@ -16,7 +16,7 @@ class BurgerMenu {
       burgerActive.style.top = "0vh";
       burgerActive.style.right = "0vw";
       burgerActive.style.transition = "0.3s";
-      return;
+
     }
     if (window.innerWidth > 768) {
       childElements.forEach((element) => {
