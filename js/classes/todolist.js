@@ -3,7 +3,7 @@ class ToDoList {
   }
 
   createNewTask(taskText) {
-    if (taskText === "") return;
+    if (taskText.trim().length === 0) return;
     const newLi = document.createElement("li");
     const textLi = document.createTextNode(taskText);
     const closeButton = document.createElement("div");
@@ -15,7 +15,7 @@ class ToDoList {
   }
 
   createCompletedTask(taskText) {
-    if (taskText === "") return;
+    if (taskText.trim().length === 0) return;
     const newLi = document.createElement("li");
     const textLi = document.createTextNode(taskText);
     const closeButton = document.createElement("div");
