@@ -120,3 +120,11 @@ function animate() {
 }
 
 animate();
+
+setTimeout(() => {
+  ym(92909454, "reachGoal", "onemin");
+}, 60000);
+
+setTimeout(() => {
+  ym(92909454, "reachGoal", "twomin");
+}, 120000);
